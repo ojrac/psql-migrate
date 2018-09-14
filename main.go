@@ -25,7 +25,7 @@ The commands are:
 	[number]	Migrate to the given migration version number
 	create		Create a new up and down migration in the migration directory
 	version		Print the current migration version
-	pending		Print the name of unapplied migrations
+	pending		Print true if there are unapplied migrations, or else false
 
 All commands require a connection information, which can be set by command-line
 flags or environment variables:
