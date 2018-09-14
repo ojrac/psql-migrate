@@ -123,16 +123,23 @@ func TestDirectoriesToMigrationsTooManyInDb(t *testing.T) {
 		"0001_first.down.sql",
 	})
 
-	if err == nil {
-		t.Fatalf("Expected error")
-	}
-	expected := filesystemMissingDbMigrationError{
+	require.Equal(t, err, &filesystemMissingDbMigrationError{
 		version: 2,
-	}
+	})
+}
 
-	if *err.(*filesystemMissingDbMigrationError) != expected {
-		t.Fatalf("Expected %+v, got: %+v", expected, *err.(*filesystemMissingDbMigrationError))
-	}
+func TestDirectoriesToMigrationsMismatchedNames(t *testing.T) {
+	m, _, _ := Fixture(t)
+	_, err := m.filenamesToMigrations(context.Background(), []string{
+		"0001_name_a.up.sql",
+		"0001_name_b.down.sql",
+	})
+
+	require.Equal(t, err, &migrationNameMismatchError{
+		version:  1,
+		upName:   "name_a",
+		downName: "name_b",
+	})
 }
 
 func TestMigrateLatest(t *testing.T) {

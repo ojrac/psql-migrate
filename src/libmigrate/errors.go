@@ -29,6 +29,21 @@ func (e *filesystemMigrationMismatchError) Version() int           { return e.ve
 func (e *filesystemMigrationMismatchError) DbName() string         { return e.dbName }
 func (e *filesystemMigrationMismatchError) FilesystemName() string { return e.filesystemName }
 
+type migrationNameMismatchError struct {
+	version          int
+	upName, downName string
+}
+
+func (e *migrationNameMismatchError) Error() string {
+	return fmt.Sprintf(
+		"DB migration %d up and down migration names don't match (\"%s\" != \"%s\")",
+		e.version, e.upName, e.downName)
+}
+
+func (e *migrationNameMismatchError) Version() int     { return e.version }
+func (e *migrationNameMismatchError) UpName() string   { return e.upName }
+func (e *migrationNameMismatchError) DownName() string { return e.downName }
+
 type badMigrationFilenameError struct {
 	filename string
 	cause    error

@@ -107,6 +107,10 @@ func (m *migrator) filenamesToMigrations(ctx context.Context, names []string) (r
 	if err != nil {
 		return nil, err
 	}
+	err = validateMigrationListsMatch(upList, downList)
+	if err != nil {
+		return nil, err
+	}
 
 	err = m.testForUnknownMigrations(ctx, upList)
 	if err != nil {
@@ -134,6 +138,35 @@ func (m *migrator) testForUnknownMigrations(ctx context.Context, migrations []mi
 				version:        dbMigration.Version,
 				dbName:         dbMigration.Name,
 				filesystemName: migration.Name,
+			}
+		}
+	}
+
+	return nil
+}
+
+func validateMigrationListsMatch(upList, downList []migration) error {
+	if len(upList) != len(downList) {
+		isUp := len(upList) < len(downList)
+		var number int
+		if isUp {
+			number = len(upList) + 1
+		} else {
+			number = len(downList) + 1
+		}
+		return &missingMigrationError{
+			number: number,
+			isUp:   isUp,
+		}
+	}
+
+	for i, upMigration := range upList {
+		downMigration := downList[i]
+		if upMigration.Name != downMigration.Name {
+			return &migrationNameMismatchError{
+				version:  upMigration.Version,
+				upName:   upMigration.Name,
+				downName: downMigration.Name,
 			}
 		}
 	}
