@@ -9,7 +9,7 @@ import (
 
 	_ "github.com/lib/pq"
 
-	"libmigrate"
+	"github.com/ojrac/libmigrate"
 )
 
 var usage string = `Psql-migrate is a tool for managing a PostgreSQL database's schema.

@@ -4,10 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"libmigrate"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/ojrac/libmigrate"
 )
 
 func run(m libmigrate.Migrator, args []string) {
