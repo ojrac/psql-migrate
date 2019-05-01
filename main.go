@@ -30,7 +30,7 @@ The commands are:
 All commands require a connection information, which can be set by command-line
 flags or environment variables:
 
-	--conn-str (env: CONN_STR): lib/pq connection string, e.g.
+	--conn-str (env: MIGRATIONS_CONN_STR): lib/pq connection string, e.g.
 		"user=xxx dbname=xxx password=xxx"
 	--migrations-path (env: MIGRATIONS_PATH): Directory containing migration files
 		(default: ./migrations)
@@ -43,8 +43,8 @@ var migrationsPath string
 func parseFlags() {
 	migrationsPath = path.Join(".", "migrations")
 	parseEnv(map[string]*string{
-		"CONN_STR":        &connStr,
-		"MIGRATIONS_PATH": &migrationsPath,
+		"MIGRATIONS_CONN_STR": &connStr,
+		"MIGRATIONS_PATH":     &migrationsPath,
 	})
 
 	flag.CommandLine.Usage = func() { fmt.Printf(usage) }
@@ -60,6 +60,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error connecting to postgres: %+v\n", err)
 		os.Exit(1)
+		return
 	}
 	defer db.Close()
 
