@@ -16,13 +16,13 @@ var usage string = `Psql-migrate is a tool for managing a PostgreSQL database's 
 
 Usage:
 
-	psql-migrate [version] [arguments]
+	psql-migrate <version> [arguments]
 	psql-migrate command [arguments]
 
 The commands are:
 
-	(none)		Migrate to the latest migration version on disk
 	[number]	Migrate to the given migration version number
+	latest		Migrate to the latest migration version on disk
 	create		Create a new up and down migration in the migration directory
 	version		Print the current migration version
 	pending		Print true if there are unapplied migrations, or else false

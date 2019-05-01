@@ -24,7 +24,8 @@ func doRun(m libmigrate.Migrator, args []string) (err error) {
 	ctx := context.Background()
 
 	if len(args) == 0 {
-		return m.MigrateLatest(ctx)
+		flag.CommandLine.Usage()
+		return nil
 	}
 
 	command := args[0]
@@ -33,6 +34,17 @@ func doRun(m libmigrate.Migrator, args []string) (err error) {
 	}
 
 	switch command {
+	case "latest":
+		return m.MigrateLatest(ctx)
+	case "create":
+		if len(args) > 2 {
+			fmt.Printf("create: Missing migration name\n\n")
+			flag.CommandLine.Usage()
+			os.Exit(1)
+			return
+		}
+		name := args[1]
+		return m.Create(ctx, name)
 	case "version":
 		version, err := m.GetVersion(ctx)
 		if err == nil {
@@ -49,15 +61,6 @@ func doRun(m libmigrate.Migrator, args []string) (err error) {
 			}
 		}
 		return err
-	case "create":
-		if len(args) > 2 {
-			fmt.Printf("create: Missing migration name\n\n")
-			flag.CommandLine.Usage()
-			os.Exit(1)
-			return
-		}
-		name := args[1]
-		return m.Create(ctx, name)
 	}
 
 	flag.CommandLine.Usage()
