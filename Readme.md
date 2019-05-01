@@ -20,13 +20,13 @@ migrations as part of an automated process, you can use the output of
 `psql-migrate pending` to determine when to block production deploys until the
 migrations are applied manually.
 
-	psql-migrate [version] [arguments]
+	psql-migrate <version> [arguments]
 	psql-migrate command [arguments]
 
 The commands are:
 
-	(none)		Migrate to the latest migration version on disk
 	[number]	Migrate to the given migration version number
+	latest		Migrate to the latest migration version on disk
 	create		Create a new up and down migration in the migration directory
 	version		Print the current migration version
 	pending		Print true if there are unapplied migrations, or else false
