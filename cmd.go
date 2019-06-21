@@ -37,7 +37,7 @@ func doRun(m libmigrate.Migrator, args []string) (err error) {
 	case "latest":
 		return m.MigrateLatest(ctx)
 	case "create":
-		if len(args) > 2 {
+		if len(args) < 2 {
 			fmt.Printf("create: Missing migration name\n\n")
 			flag.CommandLine.Usage()
 			os.Exit(1)
