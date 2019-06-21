@@ -51,6 +51,9 @@ func doRun(m libmigrate.Migrator, args []string) (err error) {
 			fmt.Printf("%d\n", version)
 		}
 		return err
+	case "tool-version":
+		fmt.Printf("%s\n", ToolVersion)
+		return nil
 	case "pending":
 		hasPending, err := m.HasPending(ctx)
 		if err == nil {

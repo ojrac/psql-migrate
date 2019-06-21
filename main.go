@@ -21,11 +21,12 @@ Usage:
 
 The commands are:
 
-	[number]	Migrate to the given migration version number
-	latest		Migrate to the latest migration version on disk
-	create		Create a new up and down migration in the migration directory
-	version		Print the current migration version
-	pending		Print true if there are unapplied migrations, or else false
+	[number]      Migrate to the given migration version number
+	latest        Migrate to the latest migration version on disk
+	create        Create a new up and down migration in the migration directory
+	version       Print the current migration version
+	tool-version  Print the version of the migration tool
+	pending       Print true if there are unapplied migrations, or else false
 
 All commands require a connection information, which can be set by command-line
 flags or environment variables:
@@ -38,6 +39,8 @@ flags or environment variables:
 	--table (env: MIGRATIONS_TABLE): Table to track migration status. (default: migration_version)
 
 `
+
+const ToolVersion = "1.2.0"
 
 var connStr string
 var migrationsPath string
