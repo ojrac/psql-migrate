@@ -28,6 +28,14 @@ func doRun(m libmigrate.Migrator, args []string) (err error) {
 		return nil
 	}
 
+	for _, arg := range args {
+		if strings.HasPrefix(arg, "-") {
+			fmt.Printf("Flag \"%s\" must be given before \"%s\"\n", arg, args[0])
+			os.Exit(1)
+			return
+		}
+	}
+
 	command := args[0]
 	if version, err := strconv.Atoi(command); err == nil {
 		return m.MigrateTo(ctx, version)
