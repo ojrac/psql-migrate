@@ -1,11 +1,7 @@
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/lib/pq v1.0.0 h1:X5PMW56eZitiTeO7tKzZxFCSpbFZJtkMMooicw2us9A=
-github.com/lib/pq v1.0.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
-github.com/lib/pq v1.1.0 h1:/5u4a+KGJptBRqGzPvYQL9p0d/tPR4S31+Tnzj9lEO4=
-github.com/lib/pq v1.1.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
-github.com/ojrac/libmigrate v1.0.0 h1:amiVAQuGus5cZQbDRkZ0zvP4YC5GKOZHag+FocUM1/0=
-github.com/ojrac/libmigrate v1.0.0/go.mod h1:j/eSmVyQV7XhHQlBtrC7TCbzJ2R02i7kSqPKk2mlzeM=
-github.com/ojrac/libmigrate v1.1.0 h1:eUSsoU+Vv8cumJ9kgucoztZgbv9dZAvZw+8cBt/7ouI=
-github.com/ojrac/libmigrate v1.1.0/go.mod h1:j/eSmVyQV7XhHQlBtrC7TCbzJ2R02i7kSqPKk2mlzeM=
+github.com/lib/pq v1.1.1 h1:sJZmqHoEaY7f+NPP8pgLB/WxulyR3fewgCM2qaSlBb4=
+github.com/lib/pq v1.1.1/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
+github.com/ojrac/libmigrate v1.2.0 h1:S5yfVvBm/6bFaYc9Jj1gqjxZJl6dAlzvINWpsZF79Ug=
+github.com/ojrac/libmigrate v1.2.0/go.mod h1:j/eSmVyQV7XhHQlBtrC7TCbzJ2R02i7kSqPKk2mlzeM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
