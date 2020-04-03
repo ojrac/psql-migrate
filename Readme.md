@@ -14,7 +14,7 @@ Usage
 -----
 
 The tool looks for migrations in a directory, `./migrations` by default, with
-names like `0001\_initial.up.sql` and `0001\_initial.down.sql`. As a shortcut,
+names like `0001_initial.up.sql` and `0001_initial.down.sql`. As a shortcut,
 the tool can create empty up and down migration files for you. If you run
 migrations as part of an automated process, you can use the output of
 `psql-migrate pending` to determine when to block production deploys until the
